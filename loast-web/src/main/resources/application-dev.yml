@@ -1,0 +1,85 @@
+
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 45m
+    context-path: /api/
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    locale: zh_CN
+    generator:
+      write-numbers-as-strings: true
+      write-bigdecimal-as-plain: true
+    serialization:
+      write-dates-as-timestamps: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://47.97.18.175:3306/loast?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    url: mpw:LrZVy59Rv0W+K4Ax+wtyuNi4o1xSsrdVbrqOEAXvAxi3VLnIjRo6Su2/BLaIsKC3PgB8s49O4LvU5Y8amcj2UdYKDkbP6/e4ZVev51RUBGORHyvZao2UXdaS0f9vbw1x1YLGDNOAorTSerNx2AVCleipuVZZdYYvdc1Lie0TGftvh21ZWMn2x7bTQheSHmIqswSIWTcExUzbn7+gHofSwQ==
+#    username: root
+    username: mpw:htSYUSUiNwvEzt3oS2i0Aw==
+#    password: penghuiDB01
+    password: mpw:tJXk5IqXeiAkb0TIA5f48g==
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    # 数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+
+  # 邮件
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 714913752@qq.com
+    password: mhhwptqhtwmdbdhe
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*.xml
+
+# Sa-Token配置
+sa-token:
+  # token名称 (同时也是cookie名称)
+  token-name: token
+  # token有效期，单位s 默认30天, -1代表永不过期
+  timeout: 2592000
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: 259200 # 三天
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: false
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  is-share: false
+  # token风格
+  token-style: simple-uuid
+  # token前缀
+  token-prefix: Bearer
+  # 是否输出操作日志
+  is-log: true
+  is-read-cookie: false

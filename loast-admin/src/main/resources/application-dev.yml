@@ -1,0 +1,29 @@
+
+server:
+  port: 8081
+  servlet:
+    session:
+      timeout: 45m
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    locale: zh_CN
+    generator:
+      write-numbers-as-strings: true
+      write-bigdecimal-as-plain: true
+    serialization:
+      write-dates-as-timestamps: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.97.18.175:3306/loast?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: root
+    password: penghuiDB01
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*.xml
