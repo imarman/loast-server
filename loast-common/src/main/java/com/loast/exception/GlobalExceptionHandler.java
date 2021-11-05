@@ -34,10 +34,10 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BusinessException.class)
-    public R businessException(BusinessException e) {
+    public R handleBusinessException(BusinessException e) {
         // 打印堆栈，以供调试
-        // e.printStackTrace();
-        log.error("报错信息 exception:{}", Arrays.toString(e.getStackTrace()));
+        e.printStackTrace();
+        // log.error("报错信息 exception:{}", Arrays.toString(e.getStackTrace()));
         if (null != e.getResultCodeEnum()) {
             return R.errorMsg(e.getResultCodeEnum(), e.getMessage());
         }
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler {
      *  MethodArgumentNotValidException 就是 当对用@Valid注释的参数的验证失败时抛出的异常
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public R handleException(MethodArgumentNotValidException e, HttpServletRequest request) {
+    public R handleArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest request) {
         // 拿到 message 里面的消息
         List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
         FieldError error = fieldErrors.get(0);
@@ -81,7 +81,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public R businessException(Exception e, HttpServletRequest request) {
+    public R handlerOtherException(Exception e, HttpServletRequest request) {
         // 打印堆栈，以供调试
         // e.printStackTrace();
         log.error("服务内部错误，路径 url:{}, exception:{}", request.getRequestURI(), e);
