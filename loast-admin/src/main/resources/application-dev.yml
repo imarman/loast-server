@@ -20,7 +20,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: mpw:LrZVy59Rv0W+K4Ax+wtyuNi4o1xSsrdVbrqOEAXvAxi3VLnIjRo6Su2/BLaIsKC3PgB8s49O4LvU5Y8amcj2UdYKDkbP6/e4ZVev51RUBGORHyvZao2UXdaS0f9vbw1x1YLGDNOAorTSerNx2AVCleipuVZZdYYvdc1Lie0TGftvh21ZWMn2x7bTQheSHmIqswSIWTcExUzbn7+gHofSwQ==
     username: mpw:htSYUSUiNwvEzt3oS2i0Aw==
-    password: mpw:tJXk5IqXeiAkb0TIA5f48g==
+    password: mpw:M95sa++1fuo5423gnuBEKA==
     type: com.alibaba.druid.pool.DruidDataSource
 
     # 数据源其他配置
