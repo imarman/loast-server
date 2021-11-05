@@ -19,11 +19,8 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://47.97.18.175:3306/loast?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
     url: mpw:LrZVy59Rv0W+K4Ax+wtyuNi4o1xSsrdVbrqOEAXvAxi3VLnIjRo6Su2/BLaIsKC3PgB8s49O4LvU5Y8amcj2UdYKDkbP6/e4ZVev51RUBGORHyvZao2UXdaS0f9vbw1x1YLGDNOAorTSerNx2AVCleipuVZZdYYvdc1Lie0TGftvh21ZWMn2x7bTQheSHmIqswSIWTcExUzbn7+gHofSwQ==
-#    username: root
     username: mpw:htSYUSUiNwvEzt3oS2i0Aw==
-#    password: penghuiDB01
     password: mpw:tJXk5IqXeiAkb0TIA5f48g==
     type: com.alibaba.druid.pool.DruidDataSource
 
