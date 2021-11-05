@@ -64,20 +64,20 @@ public class GlobalExceptionHandler {
         // 判断场景值，定制化异常信息
         String message;
         if (nle.getType().equals(NotLoginException.NOT_TOKEN)) {
-            message = "未提供token";
+            message = "未登陆，请登录后访问";
         } else if (nle.getType().equals(NotLoginException.INVALID_TOKEN)) {
-            message = "token无效";
+            message = "凭证过期，请重新登录";
         } else if (nle.getType().equals(NotLoginException.TOKEN_TIMEOUT)) {
-            message = "token已过期";
+            message = "登陆已过期，重新登录";
         } else if (nle.getType().equals(NotLoginException.BE_REPLACED)) {
-            message = "token已被顶下线";
+            message = "用户被顶下线，重新登录";
         } else if (nle.getType().equals(NotLoginException.KICK_OUT)) {
-            message = "token已被踢下线";
+            message = "用户被踢下线";
         } else {
-            message = "当前会话未登录";
+            message = "未登录";
         }
         // 返回给前端
-        return R.errorMsg(ResultCodeEnum.LOGIN_ERROR, message);
+        return R.errorMsg(ResultCodeEnum.LOGIN_AUTH, message);
     }
 
     @ExceptionHandler(Exception.class)
