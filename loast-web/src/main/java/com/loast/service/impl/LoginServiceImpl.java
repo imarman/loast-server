@@ -53,7 +53,9 @@ public class LoginServiceImpl extends ServiceImpl<UserMapper, User> implements I
         // 账号匹配
         StpUtil.login(user.getId());
 
+        // 存入到 session 时要屏蔽敏感数据
         user.setPassword(null);
+        user.setSalt(null);
         // 把用户存到 session 中，方便取出用户信息
         StpUtil.getSession().set("user", user);
     }
