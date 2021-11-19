@@ -19,9 +19,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: mpw:LrZVy59Rv0W+K4Ax+wtyuNi4o1xSsrdVbrqOEAXvAxi3VLnIjRo6Su2/BLaIsKC3PgB8s49O4LvU5Y8amcj2UdYKDkbP6/e4ZVev51RUBGORHyvZao2UXdaS0f9vbw1x1YLGDNOAorTSerNx2AVCleipuVZZdYYvdc1Lie0TGftvh21ZWMn2x7bTQheSHmIqswSIWTcExUzbn7+gHofSwQ==
-    username: mpw:htSYUSUiNwvEzt3oS2i0Aw==
-    password: mpw:M95sa++1fuo5423gnuBEKA==
+    url: mpw:s0mpDJOoKqB33ZfoivZnDjkp1Y2a0DQCxZc6Am4epu+cLNI6mpiyu9hdPsbK81RtpAR1XfPPI5g/2iiFcWDwGLbLCeCrv+9mFn73lpGoAm8cjHkLexC0q+ubY6o+AWe8Pq53VyzWiRI4P9Qs+7vK9sLTCsP6OjCz5Bcd+I+U36ouwp7bNBJANU+MZm9AGDg+tBp9nH1sd4BwLWZAwjSVTQ==
+    username: mpw:Q/hzPx2V/m4pFfFCT1qGZw==
+    password: mpw:O92Ydkxxli+Qjwjlg6wT4A==
     type: com.alibaba.druid.pool.DruidDataSource
 
     # 数据源其他配置
@@ -47,11 +47,11 @@ spring:
     # Redis数据库索引（默认为0）
     database: 0
     # Redis服务器地址
-    host: mpw:mS/991CIT5yM1rEusfY/rg==
+    host: mpw:ZOBjq7luTzUSq2nAqPtw8g==
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）
-    password: mpw:M95sa++1fuo5423gnuBEKA==
+    password: mpw:rPfv5F57wh7iwPxWVM8o+A==
     # 连接超时时间
     timeout: 10s
     lettuce:
@@ -70,8 +70,8 @@ spring:
   mail:
     host: smtp.qq.com
     port: 587
-    username: 714913752@qq.com
-    password: mhhwptqhtwmdbdhe
+    username: mpw:Yk09NqI4fI4iphMS2aynlY7plwFaz/RRuqk0lUc3btg=
+    password: mpw:O4FYj8IIEZQfUSHX6rkj/gsb4kTRwM2OBBHcFSzaZZQ=
     default-encoding: UTF-8
     properties:
       mail:
@@ -79,6 +79,12 @@ spring:
           socketFactory:
             class: javax.net.ssl.SSLSocketFactory
         debug: true
+
+  rabbitmq:
+    addresses: mpw:ZOBjq7luTzUSq2nAqPtw8g==
+    username: mpw:xVv9W+sbn5YdkkMa/sogrQ==
+    password: mpw:xVv9W+sbn5YdkkMa/sogrQ==
+    port: 5672
 
 # mybatis-plus
 mybatis-plus:
