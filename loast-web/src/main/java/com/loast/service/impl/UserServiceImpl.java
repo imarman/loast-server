@@ -5,18 +5,19 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.loast.config.RabbitMQConfig;
 import com.loast.conn.ResultCodeEnum;
 import com.loast.conn.UserStatus;
-import com.loast.entity.Email;
+import com.loast.entity.SendEmailModel;
 import com.loast.entity.User;
 import com.loast.exception.BusinessException;
 import com.loast.mapper.UserMapper;
 import com.loast.model.UserModel;
 import com.loast.service.IUserService;
-import com.loast.task.MailTask;
 import com.loast.utils.GenerateUtils;
 import com.loast.utils.Md5Utils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +36,7 @@ import java.util.Date;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Resource
-    MailTask mailTask;
+    RabbitTemplate rabbitTemplate;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -71,18 +72,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         registerUser.setRegIp(request.getRemoteAddr());
         save(registerUser);
 
-        // 发送邮件
-        Email email = new Email();
-        email.setTo(registerUser.getEmail());
-        email.setSubject("账号激活邮件");
-        email.setUsername(registerUser.getUsername());
-        // 拼接激活地址
+        // 发送邮件,给消息队列插入数据
         String activeUrl = StrUtil.format("{}://{}:{}/api/user/active?code={}", request.getScheme(), request.getServerName(), request.getServerPort(), registerUser.getActiveCode());
-        String content = StrUtil.format("<h3>此邮件为激活邮件！请点击下面链接完成激活操作！</h3> <a href=\"{}\">激活请点击:{}</a> ", activeUrl, registerUser.getActiveCode());
-        email.setActiveUrl(activeUrl);
-        email.setContent(content);
-        mailTask.sendMail(email);
-
+        SendEmailModel emailModel = new SendEmailModel();
+        emailModel.setUser(registerUser);
+        emailModel.setActiveUrl(activeUrl);
+        rabbitTemplate.convertAndSend(RabbitMQConfig.SEND_EMAIL_QUEUE_NAME, emailModel);
         log.info("用户注册成功 user:{}", registerUser);
     }
 
