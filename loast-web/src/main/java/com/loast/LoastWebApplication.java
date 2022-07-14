@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Arman
  */
-@SpringBootApplication
+@SpringBootApplication()
 public class LoastWebApplication {
 
     public static void main(String[] args) {

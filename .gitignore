@@ -29,3 +29,4 @@ build/
 
 ### VS Code ###
 .vscode/
+loast-web/src/main/java/com/loast/JavaDoc.java

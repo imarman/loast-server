@@ -41,9 +41,9 @@ public class MailTask {
             helper.setSentDate(new Date());
             helper.setText(email.getContent(), true);
             javaMailSender.send(msg);
-            log.info("给用户{}({}) 发送了激活邮件, activeUrl:{}", email.getUsername(), email.getTo(), email.getActiveUrl());
+            log.info("给用户：{}({}) 发送了激活邮件, activeUrl:{}", email.getUsername(), email.getTo(), email.getActiveUrl());
         } catch (MessagingException e) {
-            log.error("给用户{} 发送了激活邮件失败", email.getTo());
+            log.error("给用户:{},发送激活邮件失败", email.getTo());
             throw new BusinessException(ResultCodeEnum.EMAIL_SEND_ERROR);
         }
     }
